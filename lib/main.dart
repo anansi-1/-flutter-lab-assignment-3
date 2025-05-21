@@ -24,11 +24,15 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Albums',
         theme: ThemeData(
           useMaterial3: true,
-          colorSchemeSeed: Colors.indigo,
-          brightness: Brightness.light,
-          scaffoldBackgroundColor: const Color(0xFFF9F9F9),
-          textTheme: Typography.blackCupertino,
+          colorSchemeSeed: const Color.fromARGB(
+            255,
+            40,
+            67,
+            220,
+          ), // This sets the primary color
+          scaffoldBackgroundColor: Color(0xFFF5F6FA),
         ),
+
         routerConfig: router,
         debugShowCheckedModeBanner: false,
       ),

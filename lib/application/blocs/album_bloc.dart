@@ -18,6 +18,8 @@ class AlbumLoading extends AlbumState {}
 class AlbumLoaded extends AlbumState {
   final Map<Album, List<Photo>> data;
   AlbumLoaded(this.data);
+
+  get albums => null;
 }
 
 class AlbumError extends AlbumState {

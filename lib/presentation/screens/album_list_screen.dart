@@ -8,7 +8,12 @@ class AlbumListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Albums')),
+      appBar: AppBar(
+        title: const Text('Albums'),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Colors.white,
+      ),
+
       body: BlocBuilder<AlbumBloc, AlbumState>(
         builder: (context, state) {
           if (state is AlbumLoading) {

@@ -9,28 +9,31 @@ class AlbumTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ListTile(
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 10,
+    return Material(
+      color: Colors.white,
+      child: InkWell(
+        onTap: onTap,
+        splashColor: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+        highlightColor: Colors.transparent,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                album.title,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black87,
+                ),
+              ),
+              const SizedBox(height: 12),
+              Divider(height: 1, thickness: 0.8, color: Colors.grey.shade300),
+            ],
           ),
-          title: Text(
-            album.title,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-          ),
-          trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 16),
-          onTap: onTap,
         ),
-        Divider(
-          height: 1,
-          thickness: 0.8,
-          color: Colors.grey.shade300,
-          indent: 16,
-          endIndent: 16,
-        ),
-      ],
+      ),
     );
   }
 }
