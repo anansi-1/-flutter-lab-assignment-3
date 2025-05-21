@@ -14,7 +14,7 @@ void main() {
 class MyApp extends StatelessWidget {
   final AlbumRepository repo;
 
-  MyApp(this.repo);
+  const MyApp(this.repo, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,15 @@ class MyApp extends StatelessWidget {
       create: (_) => AlbumBloc(repo)..add(LoadAlbums()),
       child: MaterialApp.router(
         title: 'Flutter Albums',
+        theme: ThemeData(
+          useMaterial3: true,
+          colorSchemeSeed: Colors.indigo,
+          brightness: Brightness.light,
+          scaffoldBackgroundColor: const Color(0xFFF9F9F9),
+          textTheme: Typography.blackCupertino,
+        ),
         routerConfig: router,
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(useMaterial3: false),
       ),
     );
   }

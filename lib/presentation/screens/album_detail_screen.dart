@@ -17,19 +17,67 @@ class AlbumDetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Album Title: ${album.title}', style: TextStyle(fontSize: 18)),
-            SizedBox(height: 10),
-            Text(
-              'Photos in Album: ${photos.length}',
-              style: TextStyle(fontSize: 16),
+            Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Album Title',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey[600],
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      album.title,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    SizedBox(height: 12),
+                    Text(
+                      'User ID: ${album.userId}',
+                      style: TextStyle(color: Colors.grey[700]),
+                    ),
+                  ],
+                ),
+              ),
             ),
+            SizedBox(height: 20),
+            Text(
+              'Photos (${photos.length})',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
             Expanded(
               child: ListView.builder(
                 itemCount: photos.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(photos[index].title),
-                    // No image shown
+                  final photo = photos[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 6),
+                    child: Card(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: Text(
+                          photo.title,
+                          style: TextStyle(fontSize: 15),
+                        ),
+                      ),
+                    ),
                   );
                 },
               ),
