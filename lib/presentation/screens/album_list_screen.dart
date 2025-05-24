@@ -34,8 +34,23 @@ class AlbumListScreen extends StatelessWidget {
               },
             );
           } else if (state is AlbumError) {
-            return Center(child: Text(state.message));
+            return Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(state.message, style: const TextStyle(fontSize: 16)),
+                  const SizedBox(height: 12),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<AlbumBloc>().add(LoadAlbums());
+                    },
+                    child: const Text('Retry'),
+                  ),
+                ],
+              ),
+            );
           }
+
           return SizedBox.shrink();
         },
       ),
